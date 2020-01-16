@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
+
 const app = express();
-app.use(express.json());
 
 mongoose.connect("mongodb+srv://omni:123omni123@cluster0-jiamz.mongodb.net/omnistack10?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -17,6 +18,8 @@ mongoose.connect("mongodb+srv://omni:123omni123@cluster0-jiamz.mongodb.net/omnis
 
 // MongoDB ( Não-relacional )
 
+app.use(cors({ origin: "http://localhost:3000" }));
+app.use(express.json());
 app.use(routes);
 
 console.clear();
