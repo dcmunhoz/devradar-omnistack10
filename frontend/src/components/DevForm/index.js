@@ -10,15 +10,16 @@ function DevForm({onSubmit}){
         
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition(
-        (success)=>{
-        const { latitude, longitude } = success.coords;
-        setLatitude(latitude);
-        setLongitude(longitude);
-        }, (error)=>{
-        console.log(error);
-        },{
-        timeout: 10000
-        });
+            (success)=>{
+                const { latitude, longitude } = success.coords;
+                setLatitude(latitude);
+                setLongitude(longitude);
+            }, (error)=>{
+                console.log(error);
+            },{
+                timeout: 30000,
+                enableHighAccuracy: true
+            });
     }, []);    
 
     function handleSubmit(e){
